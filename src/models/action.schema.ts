@@ -48,7 +48,6 @@ const CommentSchema = new mongoose.Schema({
 });
 
 
-
 const LikeSchema = new mongoose.Schema({
     user_id: {
         type: mongoose.Schema.Types.ObjectId,

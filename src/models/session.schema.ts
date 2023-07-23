@@ -7,10 +7,9 @@ const SessionSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
-    session_time:{
-        type: Date,
-        default: Date.now(),
-        required : true,
+    status:{
+        type: Boolean,
+        default: false
     },
     createdAT:{
         type: Date,

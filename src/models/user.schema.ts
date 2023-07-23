@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { trusted } from "mongoose";
 
 const UserSchema = new mongoose.Schema({
     username:{
@@ -30,6 +30,7 @@ const UserSchema = new mongoose.Schema({
     },
     dob:{
         type: Date,
+        required: true
     },
     boi: {
         type: String,
