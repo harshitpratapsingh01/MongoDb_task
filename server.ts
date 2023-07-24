@@ -12,25 +12,27 @@ const port = process.env.PORT;
 app.use(express.json());
 dbConnection();
 
-const options ={
+const options = {
     definition: {
         openapi: '3.0.0',
-        info:{
+        info: {
             title: "Instagram",
             version: "1.0.0"
         },
-        servers:{
-            url: 'http://localhost:2004/'
-        }
+        servers: [
+            {
+                url: "http://localhost:2004/"
+            }
+        ]
     },
-    apis: ['./server.ts']
-}
+    apis: ['./src/swaggerdocs/*'],
+};
 
 const swaggerDocument = swaggerJSDoc(options);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
-app.use('/',router);
+app.use('/', router);
 
 app.listen(port, () => {
     console.log(`server is Listening at http://localhost:${port}`);

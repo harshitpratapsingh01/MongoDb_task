@@ -16,7 +16,7 @@ router.post("/login", LoginUser.user_login);
 router.post("/post",CreatePost.create_post);
 router.post("/fav", UserFavourites.user_favourites);
 router.post("/follower", Requests.follower_following);
-router.post("/session", Sessions.maintain_session);
+// router.post("/session", Sessions.maintain_session);
 router.get("/logout", Logout.logout_user);
 
 
