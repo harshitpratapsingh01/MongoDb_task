@@ -1,6 +1,6 @@
 import User from "../models/user.schema";
-import { Redis } from "../middleware/session.redis";
 import { Sessions } from "./controller.session";
+import { Redis } from "../middleware/session.redis";
 import Session from "../models/session.schema";
 import { Verify } from "../middleware/verify.user";
 
@@ -15,6 +15,7 @@ export class Logout{
                 const isSession = await Session.find({user_id: id});
                 if(isSession){
                     if(isSession[0].status){
+                        Redis.logout_session_redis(isUser);
                         await Session.findOneAndUpdate({_id: isSession[0]._id}, {status: !isSession[0].status});
                         res.status(201).json({message: "User logOut Successfully"});
                     }

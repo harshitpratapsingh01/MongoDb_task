@@ -14,8 +14,8 @@ export class Redis{
             const isUser = await User.find({email: user.email});
             if(isUser){
                 await client.SET(isUser[0].username, JSON.stringify({
-                    'user_id': isUser[0]._id,
-                    'status': true
+                    user_id: isUser[0]._id,
+                    status: true
                 }));
                 const session = await client.get(isUser[0].username);
                 console.log(session);
@@ -28,4 +28,30 @@ export class Redis{
             console.log(err);
         }
     }
-}
+
+    static async logout_session_redis(isUser){
+        try{
+            await client.SET(isUser[0].username, JSON.stringify({
+                user_id: isUser[0]._id,
+                status: false
+            }));
+            const session = await client.get(isUser[0].username);
+            console.log(session);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+};
+
+// export class SessionLogout{
+//     static async logout_session_redis(isUser){
+
+//         await client.SET(isUser[0].username, JSON.stringify({
+//             'user_id': isUser[0]._id,
+//             'status': false
+//         }));
+//         const session = await client.get(isUser[0].username);
+//         console.log(session);
+//     }
+// };
