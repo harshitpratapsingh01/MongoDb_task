@@ -22,7 +22,7 @@ export class RegisterUser {
                     follower_count: details.follower_count,
                     following_count: details.follower_count,
                     dob: details.dob,
-                    bio: details.bio
+                    boi: details.bio
                 });
                 const Details = await user_details.save();
                 res.status(201).json({ message: "User Register Successfully" });

@@ -23,7 +23,7 @@ const options ={
             url: 'http://localhost:2004/'
         }
     },
-    apis: ['./src/routes/routes.ts']
+    apis: ['./server.ts']
 }
 
 const swaggerDocument = swaggerJSDoc(options);
@@ -37,8 +37,3 @@ app.listen(port, () => {
 });
 
 
-
-// User Follow
-// class diagram,
-// er diagram,
-// sequence diagram,

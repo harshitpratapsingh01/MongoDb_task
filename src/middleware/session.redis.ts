@@ -17,7 +17,7 @@ export class Redis{
                     'user_id': isUser[0]._id,
                     'status': true
                 }));
-                const session = await client.get('user_session');
+                const session = await client.get(isUser[0].username);
                 console.log(session);
             }
             else{
